@@ -16,11 +16,12 @@ let rec readMessages (sr: StreamReader) onMessage =
 let connectHP hostname port onMessage =
     async {
         let client = new TcpClient(hostname, port)
+        printfn "Client connection started"
         use s = client.GetStream()
         stream := s
         use sr = new StreamReader(!stream)
         readMessages sr onMessage
-        printfn "Connection lost"
+        printfn "Client connection lost"
     }
 
 let connect hostname onMessage = connectHP hostname defaultPort onMessage
