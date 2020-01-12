@@ -1,13 +1,14 @@
 module TCPClient
 open System.Net.Sockets
-open System.Net
 open System.IO
+open System.Threading
 
 let defaultPort = 3003
 let mutable stream: NetworkStream = null
 
 let sendMessage (message: string) =
-    use sw = new StreamWriter(stream)
+    while (isNull stream) do Thread.Sleep(200)
+    let sw = new StreamWriter(stream)
     sw.AutoFlush <- true
     sw.WriteLine(message)
 
@@ -29,10 +30,3 @@ let connectHP hostname port onMessage =
     }
 
 let connect hostname onMessage = connectHP hostname defaultPort onMessage
-
-let rec service (listener: TcpListener) onMessage =
-    let client = listener.AcceptTcpClient()
-    use stream = client.GetStream()
-    use sr = new StreamReader(stream)
-    readMessages sr onMessage
-    service listener onMessage
