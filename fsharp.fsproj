@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Os.fs" />
     <Compile Include="Bash.fs" />
     <Compile Include="Clipboard.fs" />
     <Compile Include="Program.fs" />
