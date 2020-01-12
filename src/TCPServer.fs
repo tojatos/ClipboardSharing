@@ -15,20 +15,21 @@ let rec readMessages (sr: StreamReader) onMessage =
         readMessages sr onMessage
     end
 
-let service (listener: TcpListener) onMessage =
+let service (listener: TcpListener) onMessage onConnect =
     while true do
         let client = listener.AcceptTcpClient()
         printfn "Client connected"
+        onConnect (client.Client.RemoteEndPoint :?> IPEndPoint).Address
         use s = client.GetStream()
         stream := s
         use sr = new StreamReader(!stream)
         readMessages sr onMessage
 
-let start onMessage =
+let start onMessage onConnect =
     async {
         let listener = TcpListener(IPAddress.Any, defaultPort)
         listener.Start()
         started <- true
         printfn "Listening started"
-        service listener onMessage
+        service listener onMessage onConnect
     }
