@@ -3,14 +3,13 @@
 open System
 open System.Threading
 
-let rec loop() =
-    Clipboard.getText() |> printfn "%s"
+let rec loop oldText =
+    let text = Clipboard.getText()
+    if oldText <> text then printfn "%s" text
     Thread.Sleep 1000
-    loop()
+    loop text
 
 [<EntryPoint>]
-let main argv =
-    Clipboard.setText "Hello, girls"
-    loop()
-    Console.Read() |> ignore
-    0 // return an integer exit code
+let main _ =
+    Clipboard.getText() |> loop
+    0
