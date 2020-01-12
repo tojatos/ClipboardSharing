@@ -19,7 +19,7 @@ let main argv =
     let clientHandleMsg msg = printfn "Client: %s" msg
     let serverHandleMsg msg = msg |> UpdateMyClipboard |> ca.Tell
     let startClient hostname = TCPClient.connect hostname clientHandleMsg |> Async.Start
-    let onClientConnect address = address.ToString() |> startClient
+    let onClientConnect address = if not TCPClient.isRunning then address.ToString() |> startClient
 
     TCPServer.start serverHandleMsg onClientConnect |> Async.Start
 

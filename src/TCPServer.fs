@@ -5,7 +5,7 @@ open System.IO
 open Networking
 
 let stream = ref null
-let mutable started = false
+let mutable isRunning = false
 
 let sendMessage (message: string) = sendMessage message stream
 let rec readMessages (sr: StreamReader) onMessage =
@@ -29,7 +29,7 @@ let start onMessage onConnect =
     async {
         let listener = TcpListener(IPAddress.Any, defaultPort)
         listener.Start()
-        started <- true
+        isRunning <- true
         printfn "Listening started"
         service listener onMessage onConnect
     }
