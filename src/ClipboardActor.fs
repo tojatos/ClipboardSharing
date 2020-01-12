@@ -9,5 +9,5 @@ type UpdateOtherClipboards(text) =
 
 type ClipboardActor() as g =
     inherit ReceiveActor()
-    do g.Receive<UpdateMyClipboard>(fun (uc: UpdateMyClipboard) -> printfn "Received: %s" uc.Text)
+    do g.Receive<UpdateMyClipboard>(fun (uc: UpdateMyClipboard) -> Clipboard.setText(uc.Text))
     do g.Receive<UpdateOtherClipboards>(fun (uc: UpdateOtherClipboards) -> TCPClient.sendMessage(uc.Text))
