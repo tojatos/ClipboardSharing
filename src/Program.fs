@@ -1,7 +1,4 @@
-﻿// Learn more about F# at http://fsharp.org
-
-open System
-open System.Threading
+﻿open System.Threading
 open Akka.Actor
 open ClipboardActor
 
