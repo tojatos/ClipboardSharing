@@ -4,11 +4,11 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Os.fs" />
-    <Compile Include="Bash.fs" />
-    <Compile Include="Clipboard.fs" />
-    <Compile Include="ClipboardActor.fs" />
-    <Compile Include="Program.fs" />
+    <Compile Include="src/Os.fs" />
+    <Compile Include="src/Bash.fs" />
+    <Compile Include="src/Clipboard.fs" />
+    <Compile Include="src/ClipboardActor.fs" />
+    <Compile Include="src/Program.fs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Akka" Version="1.4.0" />
