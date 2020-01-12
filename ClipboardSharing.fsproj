@@ -6,6 +6,7 @@
   <ItemGroup>
     <Compile Include="src/Os.fs" />
     <Compile Include="src/Bash.fs" />
+    <Compile Include="src/Networking.fs" />
     <Compile Include="src/TCPServer.fs" />
     <Compile Include="src/TCPClient.fs" />
     <Compile Include="src/Clipboard.fs" />
