@@ -6,6 +6,7 @@
     <ProjectReference Include="..\ClipboardSharing.fsproj" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BashTests.fs" />
     <Compile Include="ClipboardTests.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>

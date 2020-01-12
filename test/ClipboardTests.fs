@@ -3,11 +3,11 @@ namespace Tests
 open NUnit.Framework
 open Clipboard
 
-[<TestClass>]
-type TestClass () =
+[<TestFixture>]
+type ClipboardTests () =
 
     [<Test>]
-    member this.Test1 () =
+    member this.BasicGetSet () =
         let testText = "test text"
         setText testText
         Assert.AreEqual(testText, getText())
