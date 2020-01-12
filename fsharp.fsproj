@@ -7,6 +7,10 @@
     <Compile Include="Os.fs" />
     <Compile Include="Bash.fs" />
     <Compile Include="Clipboard.fs" />
+    <Compile Include="ClipboardActor.fs" />
     <Compile Include="Program.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Akka" Version="1.4.0" />
   </ItemGroup>
 </Project>
